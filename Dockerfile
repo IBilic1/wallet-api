@@ -5,7 +5,7 @@
 FROM gradle:7.6.1 AS build
 COPY src /home/app/src
 COPY build.gradle /home/app
-RUN gradle -f /home/app/build.gradle build
+RUN gradle build
 
 #
 # Package stage
