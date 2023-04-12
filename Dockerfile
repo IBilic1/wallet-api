@@ -3,9 +3,8 @@
 # Build stage
 #
 FROM gradle:7.6.1 AS build
-COPY src /home/app/src
-COPY build.gradle /home/app
-RUN gradle build
+COPY --chown=gradle:gradle . /home/gradle
+RUN gradle build || return 1
 
 #
 # Package stage
