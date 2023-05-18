@@ -21,7 +21,8 @@ jobs:
       - name: Build
         run: ./gradlew build
   test:
-    name: GradleTest
+    needs: build
+    name: test
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +40,8 @@ jobs:
       - name: Test
         run: ./gradlew test --tests "*"
   deploy:
-    name: Wait for Deploy
+    needs:  [build, test]
+    name: deploy
     runs-on: ubuntu-latest
 
     steps:
