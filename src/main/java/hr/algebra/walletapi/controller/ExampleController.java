@@ -10,6 +10,6 @@ public class ExampleController {
 
     @GetMapping()
     public ResponseEntity<String> example() {
-        return ResponseEntity.ok("Hello world");
+        return ResponseEntity.ok("Hello world from Wall-ET");
     }
 }
