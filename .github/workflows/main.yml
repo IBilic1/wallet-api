@@ -12,6 +12,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
+          distribution: 'corretto'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       - name: Build with Gradle
@@ -44,8 +45,7 @@ jobs:
       - name: Wait for Render Deployment
         uses: bounceapp/render-action@0.6.0
         with:
-          render-token: ${{ secrets.RENDER_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: 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
           service-id: srv-cgrdujrk9u56e3m46gug?key=JV5Z-gXgIoY
           retries: 20
           wait: 16000
