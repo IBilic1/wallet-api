@@ -1,5 +1,4 @@
 <h1 align="center">
-  <img alt="cgapp logo" src="https://raw.githubusercontent.com/create-go-app/cli/master/.github/images/cgapp_logo%402x.png" width="224px"/><br/>
   Wallet API
   </h1>
 <p align="center">
