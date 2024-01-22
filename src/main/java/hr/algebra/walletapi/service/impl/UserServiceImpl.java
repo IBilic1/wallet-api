@@ -1,7 +1,6 @@
 package hr.algebra.walletapi.service.impl;
 
 
-import hr.algebra.walletapi.model.Role;
 import hr.algebra.walletapi.model.User;
 import hr.algebra.walletapi.repository.UserRepository;
 import hr.algebra.walletapi.service.UserService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +22,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllPatient() {
-        return userRepository.findAll().stream().filter((patinent) ->patinent.getRole() == Role.USER).collect(Collectors.toList());
+    public List<User> getChildren(String email) {
+        return userRepository.findByEmail(email).map(User::getChildren).get();
+    }
+
+    @Override
+    public void addChildren(User child, String email) {
+        userRepository.save(child);
+        User user = userRepository.findByEmail(email).get();
+        user.getChildren().add(user);
+        userRepository.save(user);
     }
 }
