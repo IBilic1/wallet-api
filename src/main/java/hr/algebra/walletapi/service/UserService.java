@@ -10,5 +10,8 @@ public interface UserService {
 
     Optional<User> getUser(String email);
 
-    List<User> getAllPatient();
+
+    List<User> getChildren(String email);
+
+    void addChildren(User user, String email);
 }
